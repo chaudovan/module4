@@ -46,4 +46,15 @@ public class CustomerService implements ICustomerService {
     public void remove(int id) {
         customers.remove(id);
     }
+
+    @Override
+    public List<Customer> search(String name) {
+        List<Customer> customerList = new ArrayList<>();
+        for(Map.Entry<Integer,Customer> item: customers.entrySet()){
+            if(item.getValue().getName().toLowerCase().contains(name)){
+                customerList.add(item.getValue());
+            }
+        }
+        return customerList;
+    }
 }

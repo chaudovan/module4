@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -18,7 +19,6 @@ public class CustomerController {
 
     @GetMapping("")
     public String index(Model model) {
-
         List<Customer> customerList = customerService.findAll();
         model.addAttribute("customers", customerList);
         return "/index";
@@ -33,5 +33,11 @@ public class CustomerController {
         customer.setId((int) (Math.random() * 10000));
         customerService.save(customer);
         return "redirect:/customer";
+    }
+    @PostMapping("/search")
+    public String search(@RequestParam String search,Model model){
+        List<Customer> customerList = customerService.search(search);
+        model.addAttribute("customers", customerList);
+        return "/index";
     }
 }

@@ -9,6 +9,10 @@
         Add new customer
     </a>
 </p>
+<form th:action="@{/customer/search}" method="POST" novalidate="novalidate">
+    <input type="text" placeholder="nhập tên cần tìm" name="search">
+    <input type="submit" value="Search">
+</form>
 
 <table id = "customers">
     <thead>
