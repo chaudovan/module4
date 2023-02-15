@@ -9,9 +9,9 @@ import java.util.List;
 public class ProductRepository implements IProductRepository{
     private static List<Product> productList = new ArrayList<>();
     static {
-        productList.add(new Product(1,"Iphone",10000.0,"Sách Tay"));
-        productList.add(new Product(2,"Iphone",10000.0,"Nội Địa"));
-        productList.add(new Product(3,"Iphone",10000.0,"Loại Thứ 3"));
+        productList.add(new Product(1,"Iphone 12",10000.0,"Sách Tay"));
+        productList.add(new Product(2,"Iphone 13",10000.0,"Nội Địa"));
+        productList.add(new Product(3,"Iphone 14",10000.0,"Loại Thứ 3"));
     }
     @Override
     public List<Product> findAll() {
@@ -55,7 +55,7 @@ public class ProductRepository implements IProductRepository{
     public List<Product> searchProduct(String name) {
         List<Product> products = new ArrayList<>();
         for (Product x:productList) {
-            if(x.getNameProduct().contains(name)){
+            if(x.getNameProduct().toLowerCase().contains(name)){
                 products.add(x);
             }
         }
