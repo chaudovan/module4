@@ -6,7 +6,10 @@ import java.util.List;
 
 public interface IEmailService {
     List<HopThuEmail> findAll();
+
     void save(HopThuEmail email);
+
     HopThuEmail findById(Integer id);
-    void edit(Integer id,HopThuEmail hopThuEmail);
+
+    void edit(Integer id, HopThuEmail hopThuEmail);
 }

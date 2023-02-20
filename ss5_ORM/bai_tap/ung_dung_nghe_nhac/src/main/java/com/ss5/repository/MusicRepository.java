@@ -11,26 +11,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class MusicRepository implements IMusicRepository{
+public class MusicRepository implements IMusicRepository {
     @PersistenceContext
     EntityManager entityManager;
+
     @Override
     public List<Music> findAll() {
         List<Music> musicList = new ArrayList<>();
-        TypedQuery<Music> query = entityManager.createQuery("select m from Music as m",Music.class);
+        TypedQuery<Music> query = entityManager.createQuery("select m from Music as m", Music.class);
         musicList = query.getResultList();
         return musicList;
     }
 
     @Override
     public Music findById(int id) {
-        return entityManager.find(Music.class,id);
+        return entityManager.find(Music.class, id);
     }
+
     @Transactional
     @Override
     public void saveMusic(Music music) {
         entityManager.persist(music);
     }
+
     @Transactional
     @Override
     public void editMusic(int id, Music music) {
@@ -41,6 +44,7 @@ public class MusicRepository implements IMusicRepository{
         music1.setLink(music.getLink());
         entityManager.merge(music1);
     }
+
     @Transactional
     @Override
     public void delete(int id) {

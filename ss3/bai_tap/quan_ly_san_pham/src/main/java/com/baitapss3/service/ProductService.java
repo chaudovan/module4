@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProductService implements IProductService{
+public class ProductService implements IProductService {
     @Autowired
     IProductRepository iProductRepository;
+
     @Override
     public List<Product> findAll() {
         return iProductRepository.findAll();
@@ -28,7 +29,7 @@ public class ProductService implements IProductService{
 
     @Override
     public void editProduct(int id, Product product) {
-        iProductRepository.editProduct(id,product);
+        iProductRepository.editProduct(id, product);
     }
 
     @Override

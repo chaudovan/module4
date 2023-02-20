@@ -12,14 +12,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class TuDienConTroller {
     @Autowired
     ITuDien tuDien;
+
     @GetMapping("/tratu")
-    public String showTraTu(){
+    public String showTraTu() {
         return "tratu";
     }
+
     @PostMapping("/tratu")
-    public String show(@RequestParam String keyWord, Model model){
+    public String show(@RequestParam String keyWord, Model model) {
         String result = tuDien.traTu(keyWord);
-        model.addAttribute("keyWord",result);
+        model.addAttribute("keyWord", result);
         return "tratu";
     }
 }

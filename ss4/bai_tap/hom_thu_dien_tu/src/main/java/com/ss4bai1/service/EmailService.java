@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
-public class EmailService implements IEmailService{
+public class EmailService implements IEmailService {
     @Autowired
     IEmailRepository emailRepository;
+
     @Override
     public List<HopThuEmail> findAll() {
         return emailRepository.findAll();
@@ -27,6 +29,6 @@ public class EmailService implements IEmailService{
 
     @Override
     public void edit(Integer id, HopThuEmail hopThuEmail) {
-        emailRepository.edit(id,hopThuEmail);
+        emailRepository.edit(id, hopThuEmail);
     }
 }

@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface IYTeService {
     List<ToKhaiYTe> findAll();
-    void editYTe(int id,ToKhaiYTe toKhaiYTe);
+
+    void editYTe(int id, ToKhaiYTe toKhaiYTe);
+
     ToKhaiYTe findById(int id);
 }

@@ -7,24 +7,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class YTeRepository implements IYTeRepository{
+public class YTeRepository implements IYTeRepository {
     private static List<ToKhaiYTe> toKhaiYTeList = new ArrayList<>();
+
     static {
-        toKhaiYTeList.add(new ToKhaiYTe(1,"Van Chau","1990","nam","Việt Nam","321654987","moto","06","02","2023","02","07",
-                "2023","không","Nại Hiên Đông 10","0905010203","chau@gmail.com"));
-        toKhaiYTeList.add(new ToKhaiYTe(2,"Van Anh","1990","nam","Việt Nam","321654987","moto","06","02","2023","02","07",
-                "2023","không","Nại Hiên Đông 10","0905010203","chau@gmail.com"));
+        toKhaiYTeList.add(new ToKhaiYTe(1, "Van Chau", "1990", "nam", "Việt Nam", "321654987", "moto", "06", "02", "2023", "02", "07",
+                "2023", "không", "Nại Hiên Đông 10", "0905010203", "chau@gmail.com"));
+        toKhaiYTeList.add(new ToKhaiYTe(2, "Van Anh", "1990", "nam", "Việt Nam", "321654987", "moto", "06", "02", "2023", "02", "07",
+                "2023", "không", "Nại Hiên Đông 10", "0905010203", "chau@gmail.com"));
 
     }
+
     @Override
     public List<ToKhaiYTe> findAll() {
         return toKhaiYTeList;
     }
 
     @Override
-    public void editYTe(int id,ToKhaiYTe toKhaiYTe) {
-        for (ToKhaiYTe x:toKhaiYTeList) {
-            if(x.getId()==id){
+    public void editYTe(int id, ToKhaiYTe toKhaiYTe) {
+        for (ToKhaiYTe x : toKhaiYTeList) {
+            if (x.getId() == id) {
                 x.setHoTen(toKhaiYTe.getHoTen());
                 x.setNamSinnh(toKhaiYTe.getNamSinnh());
                 x.setCMND(toKhaiYTe.getCMND());
@@ -47,12 +49,12 @@ public class YTeRepository implements IYTeRepository{
 
     @Override
     public ToKhaiYTe findById(int id) {
-        ToKhaiYTe toKhaiYTeNew  = null;
-        for (ToKhaiYTe x:toKhaiYTeList) {
-            if(x.getId()==id){
-                toKhaiYTeNew = new ToKhaiYTe(x.getId(),x.getHoTen(),x.getNamSinnh(),x.getGioiTinh(),x.getQuocTich(),x.getCMND(),
-                        x.getLoaiPhuongTien(),x.getNgayKhoiHanh(),x.getThangKhoiHanh(),x.getNamKhoiHanh(),x.getNamKetThuc(),x.getThangKetThuc(),x.getNamKetThuc(),x.getDiLai(),
-                        x.getDiaChi(),x.getDienThoai(),x.getEmail());
+        ToKhaiYTe toKhaiYTeNew = null;
+        for (ToKhaiYTe x : toKhaiYTeList) {
+            if (x.getId() == id) {
+                toKhaiYTeNew = new ToKhaiYTe(x.getId(), x.getHoTen(), x.getNamSinnh(), x.getGioiTinh(), x.getQuocTich(), x.getCMND(),
+                        x.getLoaiPhuongTien(), x.getNgayKhoiHanh(), x.getThangKhoiHanh(), x.getNamKhoiHanh(), x.getNamKetThuc(), x.getThangKetThuc(), x.getNamKetThuc(), x.getDiLai(),
+                        x.getDiaChi(), x.getDienThoai(), x.getEmail());
             }
         }
         return toKhaiYTeNew;

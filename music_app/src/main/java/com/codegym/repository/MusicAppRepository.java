@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class MusicAppRepository implements IMusicAppRepository{
+public class MusicAppRepository implements IMusicAppRepository {
     @PersistenceContext
     EntityManager entityManager;
 

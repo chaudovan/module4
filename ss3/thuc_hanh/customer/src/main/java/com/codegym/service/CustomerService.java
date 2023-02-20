@@ -50,8 +50,8 @@ public class CustomerService implements ICustomerService {
     @Override
     public List<Customer> search(String name) {
         List<Customer> customerList = new ArrayList<>();
-        for(Map.Entry<Integer,Customer> item: customers.entrySet()){
-            if(item.getValue().getName().toLowerCase().contains(name)){
+        for (Map.Entry<Integer, Customer> item : customers.entrySet()) {
+            if (item.getValue().getName().toLowerCase().contains(name)) {
                 customerList.add(item.getValue());
             }
         }

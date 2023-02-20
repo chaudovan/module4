@@ -8,12 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
-  <head>
+<head>
     <title>$Title$</title>
-  </head>
-  <body>
-  <p>
+</head>
+<body>
+<p>
     <a href="/product">Product Manager</a>
-  </p>
-  </body>
+</p>
+</body>
 </html>

@@ -49,14 +49,14 @@
         <div class="col-12">
             <p>Thông tin đi lại:</p>
             <div class="form-check form-check-inline">
-                <form:radiobuttons path="loaiPhuongTien" items="${vehicle}" />
+                <form:radiobuttons path="loaiPhuongTien" items="${vehicle}"/>
             </div>
 
         </div>
         <div class="col-6">
             <label for="dayStart">Ngày khởi hành:</label>
             <div class="col-12">
-                <div class="col-4" style="float: left; width: 100%" >
+                <div class="col-4" style="float: left; width: 100%">
                     <form:select path="ngayKhoiHanh" items="${dayInput}" cssClass="form-control" id="dayStart"/>
                 </div>
                 <div class="col-4" style="float: left; width: 100%">

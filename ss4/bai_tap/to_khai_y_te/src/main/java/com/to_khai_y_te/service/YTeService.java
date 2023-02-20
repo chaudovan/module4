@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class YTeService implements IYTeService{
+public class YTeService implements IYTeService {
     @Autowired
     IYTeRepository iyTeRepository;
+
     @Override
     public List<ToKhaiYTe> findAll() {
         return iyTeRepository.findAll();
@@ -18,8 +19,8 @@ public class YTeService implements IYTeService{
 
 
     @Override
-    public void editYTe(int id,ToKhaiYTe toKhaiYTe) {
-        iyTeRepository.editYTe(id,toKhaiYTe);
+    public void editYTe(int id, ToKhaiYTe toKhaiYTe) {
+        iyTeRepository.editYTe(id, toKhaiYTe);
     }
 
     @Override

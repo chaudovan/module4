@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class StudentService implements IStudentService {
     @Autowired
     private IRepositoryStudent iRepositoryStudent;
+
     @Override
     public List<Student> findAll() {
         List<Student> studentList = iRepositoryStudent.findAll();

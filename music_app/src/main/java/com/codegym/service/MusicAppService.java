@@ -5,10 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class MusicAppService implements IMusicAppService {
     @Autowired
     IMusicAppService iMusicAppService;
+
     @Override
     public List<MusicApp> findAll() {
         return iMusicAppService.findAll();
@@ -16,7 +18,7 @@ public class MusicAppService implements IMusicAppService {
 
     @Override
     public void save(MusicApp musicApp) {
-    iMusicAppService.save(musicApp);
+        iMusicAppService.save(musicApp);
     }
 
     @Override
@@ -26,7 +28,7 @@ public class MusicAppService implements IMusicAppService {
 
     @Override
     public void update(int id, MusicApp musicApp) {
-        iMusicAppService.update(id,musicApp);
+        iMusicAppService.update(id, musicApp);
     }
 
     @Override

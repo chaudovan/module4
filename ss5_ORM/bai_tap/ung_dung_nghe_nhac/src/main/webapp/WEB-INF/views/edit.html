@@ -9,13 +9,13 @@
 <form th:object="${music}" th:action="@{/music/edit}" method="post">
     <input th:field="*{id}" hidden>
     Name Music :
-    <input th:field="*{nameMusic}" ><br><br>
+    <input th:field="*{nameMusic}"><br><br>
     Artist :
-    <input th:field="*{artist}" /><br><br>
+    <input th:field="*{artist}"/><br><br>
     Category :
-    <input th:field="*{category}" /><br><br>
+    <input th:field="*{category}"/><br><br>
     Link :
-    <input th:field="*{link}" /><br><br>
+    <input th:field="*{link}"/><br><br>
     <button>Save</button>
 </form>
 </body>

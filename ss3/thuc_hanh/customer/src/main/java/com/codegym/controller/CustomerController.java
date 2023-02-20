@@ -23,19 +23,22 @@ public class CustomerController {
         model.addAttribute("customers", customerList);
         return "/index";
     }
+
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("customer", new Customer());
         return "/create";
     }
+
     @PostMapping("/save")
     public String save(Customer customer) {
         customer.setId((int) (Math.random() * 10000));
         customerService.save(customer);
         return "redirect:/customer";
     }
+
     @PostMapping("/search")
-    public String search(@RequestParam String search,Model model){
+    public String search(@RequestParam String search, Model model) {
         List<Customer> customerList = customerService.search(search);
         model.addAttribute("customers", customerList);
         return "/index";

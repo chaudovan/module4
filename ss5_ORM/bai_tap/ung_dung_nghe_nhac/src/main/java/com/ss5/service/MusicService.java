@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class MusicService implements IMusicService{
+public class MusicService implements IMusicService {
     @Autowired
     IMusicRepository iMusicRepository;
+
     @Override
     public List<Music> findAll() {
         return iMusicRepository.findAll();
@@ -28,7 +29,7 @@ public class MusicService implements IMusicService{
 
     @Override
     public void editMusic(int id, Music music) {
-        iMusicRepository.editMusic(id,music);
+        iMusicRepository.editMusic(id, music);
     }
 
     @Override

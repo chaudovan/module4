@@ -86,6 +86,7 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
     public EntityManager entityManager(EntityManagerFactory entityManagerFactory) {
         return entityManagerFactory.createEntityManager();
     }
+
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
@@ -96,6 +97,7 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
         em.setJpaProperties(additionalProperties());
         return em;
     }
+
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -105,6 +107,7 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
         dataSource.setPassword("123456");
         return dataSource;
     }
+
     Properties additionalProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.hbm2ddl.auto", "update");
@@ -112,6 +115,7 @@ public class AppConfiguration extends WebMvcConfigurerAdapter implements Applica
         properties.setProperty("show_sql", "false");
         return properties;
     }
+
     @Bean
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();

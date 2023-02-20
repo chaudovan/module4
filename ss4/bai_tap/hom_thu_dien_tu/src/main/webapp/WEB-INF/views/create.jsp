@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -29,9 +29,9 @@
     </form:select>
     emails per page<br>
     Spam fillter :
-    <form:checkbox path="spam"  value="spam"/>Spam<br>
+    <form:checkbox path="spam" value="spam"/>Spam<br>
     Signature :
-    <form:textarea path="content" /><br>
+    <form:textarea path="content"/><br>
     <form:button>Save</form:button>
 </form:form>
 </body>

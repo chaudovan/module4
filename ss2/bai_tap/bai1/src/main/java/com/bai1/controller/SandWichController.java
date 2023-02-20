@@ -14,14 +14,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SandWichController {
     @Autowired
     ISandWichService sandWichService;
+
     @GetMapping("/save")
-    public String show(){
+    public String show() {
         return "sandwich";
     }
+
     @PostMapping("/save")
-    public String save(@RequestParam(value = "sandWich",defaultValue = "Please choice") String[] sandWich, Model model){
+    public String save(@RequestParam(value = "sandWich", defaultValue = "Please choice") String[] sandWich, Model model) {
         String result = sandWichService.save(sandWich);
-        model.addAttribute("result",result);
+        model.addAttribute("result", result);
         return "sandwich";
     }
 }

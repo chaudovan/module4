@@ -13,10 +13,11 @@ import java.util.List;
 public class StudentController {
     @Autowired
     private IStudentService iStudentService;
+
     @GetMapping("/student")
-    public String show(Model model){
+    public String show(Model model) {
         List<Student> studentList = iStudentService.findAll();
-        model.addAttribute("studentList",studentList);
+        model.addAttribute("studentList", studentList);
         return "list";
     }
 }

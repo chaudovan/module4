@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
-@WebFilter(filterName = "FuramaFilter",value = "/*")
+@WebFilter(filterName = "FuramaFilter", value = "/*")
 public class FuramaFilter implements Filter {
     public void destroy() {
     }
