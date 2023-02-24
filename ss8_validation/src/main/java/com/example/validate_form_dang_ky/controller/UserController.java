@@ -21,9 +21,8 @@ public class UserController {
     IUserService iUserService;
     @GetMapping("")
     public String showList(Model model,@RequestParam(defaultValue = "0") int page){
-        String name = "";
         Pageable pageable = PageRequest.of(page,2, Sort.by("firstName").descending());
-        model.addAttribute("listUser",iUserService.findUserByFirstName(name,pageable));
+        model.addAttribute("listUser",iUserService.findUserByFirstName("",pageable));
         return "list";
     }
     @GetMapping("/create")
