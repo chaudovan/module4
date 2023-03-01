@@ -43,7 +43,15 @@ public class UserController {
     }
     @GetMapping("/delete")
     public String deleteUser(@RequestParam int id){
+
         iUserService.delete(id);
+        return "redirect:/users";
+    }
+    @GetMapping("/deleteAll")
+    public String deleteAll(@RequestParam(value = "id") int[] id){
+        for (int i = 0; i < id.length; i++) {
+            iUserService.delete(id[i]);
+        }
         return "redirect:/users";
     }
     @GetMapping("/edit")

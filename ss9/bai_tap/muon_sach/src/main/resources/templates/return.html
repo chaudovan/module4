@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/book/return}" th:object="${borrowBook}" th:method="post">
+    <input type="text" placeholder="Nhập mã mượn sách" th:field="*{borrowCode}">
+    <input type="submit" value="Return Book">
+</form>
+</body>
+</html>

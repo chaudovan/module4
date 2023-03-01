@@ -23,6 +23,7 @@
         <th>Detail</th>
         <th>Edit</th>
         <th>Delete</th>
+        <th>Delete all</th>
     </tr>
     </thead>
     <tbody>
@@ -99,6 +100,39 @@
                 </div>
             </div>
         </td>
+        <td>
+            <input type="checkbox" name="deleteAll" id="deleteAll" th:value="${row.id}">
+        </td>
+    </tr>
+    <tr>
+        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                th:data-bs-target="'#blogDelete'" th:attr="onclick=|showUserDelete()|">
+            Delete
+        </button>
+        <div class="modal fade" th:id="blogDelete" data-bs-backdrop="static"
+             data-bs-keyboard="false"
+             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Do you want delete all blog
+                    </div>
+                    <form th:action="@{/users/deleteAll}" method="get">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng
+                            </button>
+                            <button type="submit" class="btn btn-danger">Xoá</button>
+                            <input  name="id" type="text" id="idDelete">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </tr>
     <tr th:if="${listUser.isEmpty()}">
         <td colspan="9">Danh sách trống</td>
@@ -120,6 +154,14 @@
         crossorigin="anonymous">
 
 </script>
-
+<script>
+    function showUserDelete(){
+        let idArray = new Array();
+        idArray.push(document.getElementById('deleteAll').value);
+        for (let i = 0; i <idArray.length ; i++) {
+            document.getElementById('idDelete').value = idArray[i];
+        }
+    }
+</script>
 </body>
 </html>
