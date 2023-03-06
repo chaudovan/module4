@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        /*.card .ribbon{*/
+        /*    width: 60px;*/
+        /*    height: 600px;*/
+        /*    position: absolute;*/
+        /*    top: -10px;*/
+        /*    left: -10px;*/
+        /*    overflow: hidden;*/
+        /*}*/
+
+        /*.card .ribbon::before,*/
+        /*.card .ribbon::after{*/
+        /*    position: absolute;*/
+        /*    content: "";*/
+        /*    z-index: -1;*/
+        /*    display: block;*/
+        /*    border: 7px solid #ba24f0;*/
+        /*    border-top-color: transparent;*/
+        /*    border-left-color: transparent;*/
+        /*}*/
+
+        /*.card .ribbon::before{*/
+        /*    top: 0px;*/
+        /*    right: 15px;*/
+        /*}*/
+
+        /*.card .ribbon::after{*/
+        /*    bottom: 15px;*/
+        /*    left: 0px;*/
+        /*}*/
+
+        /*.card .ribbon span{*/
+        /*    position: absolute;*/
+        /*    top:30px;*/
+        /*    right: 0;*/
+        /*    transform: rotate(45deg);*/
+        /*    width: 200px;*/
+        /*    background: #ba24f0;*/
+        /*    padding: 10px 0;*/
+        /*    color: #fff;*/
+        /*    text-align: center;*/
+        /*    font-size: 17px;*/
+        /*    box-shadow: 0 5px 10px rgba(0,0,0,0.12);*/
+        /*}*/
+        .ribbon{
+            position: absolute;
+            top: 0;
+            overflow: hidden;
+            height: 130px;
+            width: 143px;
+            text-align: center;
+            z-index: 0;
+            right: 0;
+            border-top-right-radius: 0.7em;
+            -o-border-top-right-radius: 0.7em;
+            -moz-border-top-right-radius: 0.7em;
+            -webkit-border-top-right-radius: 0.7em;
+        }
+        .ribbon span{
+            font-size: 14px;
+            color: #444;
+            background: #ffd400;
+            text-transform: uppercase;
+            padding: 58px 35px 17px 40px;
+            width: 281px;
+            text-align: center;
+            display: block;
+            position: absolute;
+            left: -7px;
+            top: -50px;
+            -moz-transition: all 0.5s ease;
+            -webkit-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+            -webkit-transform: rotate(-44deg);
+            -ms-transform: rotate(-44deg);
+            transform: rotate(40deg);
+            box-shadow: 3px -4px 13px 3px rgb(0 0 0 / 75%);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-3" th:each="item : ${productList}">
+                    <div class="card" style="width:100%;">
+                        <div class="ribbon"><span>NEW</span></div>
+                        <a th:href="@{/product/detail/{id}(id=${item.id})}">
+                            <div><img th:src="@{${item.image}}" height="100%" class="card-img-top"
+                                      alt="img"></div>
+                        </a>
+                        <div class="card-body">
+                            <p class="card-title" th:text="${item.name}"></p>
+                            <p class="card-text" th:text="${item.price}"></p>
+                            <a class="btn btn-success" role="button" th:href="@{/product/add/__${item.id}__}">Mua</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" th:if="${historyProduct}">
+            <div class="card" style="width: 18rem;">
+                <img th:src="${historyProduct.image}" class="card-img-top p-5"
+                     width="100px" height="300px" alt="img">
+                </a>
+                <div class="card-body">
+                    <p class="card-title" th:text="${historyProduct.name}"></p>
+                    <p class="card-text" th:text="${historyProduct.price}"></p>
+                </div>
+            </div>
+            <h4>Sản phẩm xem gần nhất</h4>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
