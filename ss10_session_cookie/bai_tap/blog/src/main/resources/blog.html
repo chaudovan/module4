@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Blog</title>
+    <script
+            src="https://code.jquery.com/jquery-3.6.4.js"
+            integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+            crossorigin="anonymous">
+    </script>
+</head>
+<body>
+<form>
+    <input type="text" id="searchName" placeholder="searchName">
+    <button id="btn-save" type="button" onclick="search()">Search</button>
+</form>
+<h1>Danh Sách Blog</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Time</th>
+        <th>Summury</th>
+        <th>CategotyId</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    </tbody>
+
+</table>
+</body>
+<script>
+    display();
+    function display(){
+        $.ajax({
+            contentType: 'application/json',
+            type: "GET",
+            dataType:"json",
+            //tên API
+            url: "http://localhost:8080/api/blog",
+            success: function (data) {
+                let content ="";
+                for(let i=0; i<data.length;i++){
+                    content +='  <tr>\n' +
+                        '<td>'+(i+1)+'</td>\n' +
+                        '<td>'+data[i].id+'</td>\n' +
+                        '<td>'+data[i].name+'</td>\n' +
+                        '<td>'+data[i].time+'</td>\n' +
+                        '<td>'+data[i].summary+'</td>\n' +
+                        '<td>'+data[i].category.name+'</td>\n' +
+                        '</tr>'
+                }
+                $("tbody").html(content);
+            }
+        });
+    }
+    function search(){
+        let searchName = $("#searchName").val();
+        console.log(searchName);
+        if(searchName==""){
+            display();
+        }else {
+            $.ajax({
+                contentType: 'application/json',
+                type: "GET",
+                dataType: "json",
+                //tên API
+                url: "http://localhost:8080/api/blog/search/" + searchName,
+                success: function (data) {
+                    let content = "";
+                    for (let i = 0; i < data.length; i++) {
+                        content += '  <tr>\n' +
+                            '<td>' + (i + 1) + '</td>\n' +
+                            '<td>' + data[i].id + '</td>\n' +
+                            '<td>' + data[i].name + '</td>\n' +
+                            '<td>' + data[i].time + '</td>\n' +
+                            '<td>' + data[i].summary + '</td>\n' +
+                            '<td>' + data[i].category.name + '</td>\n' +
+                            '</tr>'
+                    }
+                    if(content==""){
+                        $("tbody").html("isEmpty")
+                    }else {
+                        $("tbody").html(content);
+                    }
+                }
+            });
+        }
+    }
+</script>
+</html>

@@ -35,6 +35,20 @@ public class Employee {
     public Employee() {
     }
 
+    public Employee(int id, String name, String dateOfBirth, String idCard, double salary, String phone, String email, String address, Position position, EducationDegree educationDegree, Division division) {
+        this.id = id;
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.idCard = idCard;
+        this.salary = salary;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.position = position;
+        this.educationDegree = educationDegree;
+        this.division = division;
+    }
+
     public Employee(int id, String name, String dateOfBirth, String idCard, double salary, String phone, String email, String address, Position position, EducationDegree educationDegree, Division division, User user) {
         this.id = id;
         this.name = name;
