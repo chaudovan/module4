@@ -75,5 +75,10 @@ public class BlogService implements IBlogService{
         return iBlogRepository.findAllName(name);
     }
 
+    @Override
+    public List<Blog> getBlogList(int quantity) {
+        return iBlogRepository.getBlogList(quantity);
+    }
+
 
 }

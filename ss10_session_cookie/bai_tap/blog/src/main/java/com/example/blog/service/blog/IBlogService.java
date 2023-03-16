@@ -20,4 +20,5 @@ public interface IBlogService {
     List<Blog> findByCategory_Id(Integer id);
     List<Blog> search(String name);
     List<Blog> findAllName(String name);
+    List<Blog> getBlogList(int quantity);
 }

@@ -19,6 +19,7 @@ public class BlogRestController {
     private IBlogService iBlogService;
     @Autowired
     private ICategoryService iCategoryService;
+    private int dem=2;
     @GetMapping("")
     public ResponseEntity<List<Blog>> getAll(){
         List<Blog> blogList = iBlogService.findAll();
@@ -68,6 +69,15 @@ public class BlogRestController {
     @GetMapping("/search/{name}")
     public ResponseEntity<List<Blog>> searchBlog(@PathVariable String name){
         List<Blog> blogList = iBlogService.search(name);
+        if(blogList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(blogList,HttpStatus.OK);
+    }
+    @GetMapping("/quantity")
+    public ResponseEntity<List<Blog>> showLimit(){
+        dem +=2;
+        List<Blog> blogList = iBlogService.getBlogList(dem);
         if(blogList.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

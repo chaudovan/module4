@@ -1,7 +1,9 @@
 package com.example.furama.controller.employee;
 
+import com.example.furama.dto.EmployeeDto;
 import com.example.furama.model.Employee;
 import com.example.furama.service.IEmployeeService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -9,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -35,15 +39,21 @@ public class EmployeeController {
     }
     @GetMapping("/create")
     public String showCreate(Model model){
-        model.addAttribute("employee",new Employee());
+        model.addAttribute("employee",new EmployeeDto());
         model.addAttribute("divisionList",iEmployeeService.findAllDivision());
         model.addAttribute("educationList",iEmployeeService.findAllEducation());
         model.addAttribute("positionList",iEmployeeService.findAllPosition());
         return "employee/create";
     }
     @PostMapping("/create")
-    public String createEmployee(@ModelAttribute Employee employee){
-        iEmployeeService.save(employee);
+    public String createEmployee(@Validated @ModelAttribute EmployeeDto employee, BindingResult bindingResult){
+        new EmployeeDto().validate(employee,bindingResult);
+        if(bindingResult.hasErrors()){
+            return "redirect:/employee";
+        }
+        Employee employee1 = new Employee();
+        BeanUtils.copyProperties(employee,employee1);
+        iEmployeeService.save(employee1);
         return "redirect:/employee";
     }
     @GetMapping("/edit/{id}")

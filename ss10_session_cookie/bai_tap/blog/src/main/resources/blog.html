@@ -31,16 +31,20 @@
     </tbody>
 
 </table>
+<button class="btn btn-secondary" role="button"
+   onclick="xemThem()">Xem thêm</button>
 </body>
 <script>
-    display();
+    function xemThem(){
+        display();
+    }
     function display(){
         $.ajax({
             contentType: 'application/json',
             type: "GET",
             dataType:"json",
             //tên API
-            url: "http://localhost:8080/api/blog",
+            url: "http://localhost:8080/api/blog/quantity",
             success: function (data) {
                 let content ="";
                 for(let i=0; i<data.length;i++){

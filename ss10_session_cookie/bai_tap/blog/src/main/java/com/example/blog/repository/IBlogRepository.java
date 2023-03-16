@@ -18,4 +18,6 @@ public interface IBlogRepository extends JpaRepository<Blog,Integer> {
     List<Blog> findByNameContaining(String name);
     @Query(value = " select * from `blog` where `name` like :name ", nativeQuery = true)
     List<Blog> findAllName(@Param("name") String name);
+    @Query(value = "select * from blog limit :quantity", nativeQuery = true)
+    List<Blog> getBlogList(Integer quantity);
 }

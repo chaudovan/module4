@@ -8,7 +8,6 @@
             integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
             crossorigin="anonymous">
     </script>
-<!--    <script src="jquery-3.6.4.min.js"></script>-->
 </head>
 <body>
 <form>
@@ -44,13 +43,13 @@
     </tr>
     </thead>
 
-    <tbody id="tbody">
+    <tbody>
     </tbody>
 
 </table>
 </body>
 <script>
-        display();
+    display();
     function display(){
         $.ajax({
             contentType: 'application/json',
@@ -69,7 +68,7 @@
                         '<td>'+data[i].price+'</td>\n' +
                         '</tr>'
                 }
-                $("#tbody").html(content);
+                $("tbody").html(content);
             }
         });
     }
