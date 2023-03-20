@@ -51,12 +51,20 @@ public class CustomerController {
     }
     @GetMapping("/edit/{id}")
     public String showEdit(@PathVariable int id, Model model){
-        model.addAttribute("customer",customerService.findById(id));
+        model.addAttribute("customerDto",customerService.findById(id));
         model.addAttribute("customerTypes",customerService.findAllCusType());
         return "customer/edit";
     }
     @PostMapping("/edit")
-    public String editCustomer(@ModelAttribute Customer customer){
+    public String editCustomer(@Validated @ModelAttribute CustomerDto customerDto,BindingResult bindingResult,Model model){
+        new CustomerDto().validate(customerDto,bindingResult);
+        if(bindingResult.hasErrors()){
+            model.addAttribute("customerTypes",customerService.findAllCusType());
+            model.addAttribute("customerDto",customerService.findById(customerDto.getId()));
+            return "customer/edit";
+        }
+        Customer customer = new Customer();
+        BeanUtils.copyProperties(customerDto,customer);
         customerService.save(customer);
         return "redirect:/customer";
     }

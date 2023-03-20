@@ -76,8 +76,8 @@ public class BlogRestController {
     }
     @GetMapping("/quantity")
     public ResponseEntity<List<Blog>> showLimit(){
-        dem +=2;
         List<Blog> blogList = iBlogService.getBlogList(dem);
+        dem +=2;
         if(blogList.isEmpty()){
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
